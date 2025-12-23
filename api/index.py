@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 from datetime import date
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../templates",
+    static_folder="../static"
+)
 
 @app.route("/", methods=["GET", "POST"])
 def age_calculator():
@@ -18,5 +22,5 @@ def age_calculator():
 
     return render_template("index.html", age=age)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Required for Vercel
+app = app
