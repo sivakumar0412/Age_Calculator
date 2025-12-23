@@ -1,4 +1,8 @@
-/* Reset */
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,104 +14,35 @@ body {
     align-items: center;
 }
 
-/* Main card */
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Card hover animation */
-.container:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 40px rgba(0,0,0,0.3);
-}
-
-/* Heading */
-h2 {
-    margin-bottom: 20px;
-}
-
-/* Inputs */
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    transition: border 0.3s, box-shadow 0.3s;
-}
-
-/* Input focus animation */
-input:focus {
-    outline: none;
-    border-color: #66a6ff;
-    box-shadow: 0 0 8px rgba(102, 166, 255, 0.7);
-}
-
-/* Button */
-button {
+/* ================= LOADER ================= */
+#loader {
+    position: fixed;
     width: 100%;
-    padding: 12px;
-    background: #66a6ff;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s, transform 0.2s;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-/* Button hover */
-button:hover {
-    background: #4a90e2;
-    transform: scale(1.05);
+#loader::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 5px solid #ccc;
+    border-top-color: #4a90e2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-/* Button click animation */
-button:active {
-    transform: scale(0.95);
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
-/* Result text */
-.result {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #2ecc71;
-    animation: bounce 0.8s ease;
-}
-
-/* Page fade-in */
-.fade-in {
-    animation: fadeIn 1.2s ease-in;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes bounce {
-    0%   { transform: scale(0.8); opacity: 0; }
-    60%  { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); }
-}
-/* Toggle container */
+/* ================= TOGGLE BUTTON ================= */
 .toggle-container {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     display: flex;
@@ -115,7 +50,6 @@ button:active {
     gap: 8px;
 }
 
-/* Switch */
 .switch {
     position: relative;
     display: inline-block;
@@ -161,7 +95,125 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Dark Mode */
+/* ================= MAIN CARD ================= */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    animation: fadeIn 1.2s ease-in;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* ================= INPUTS ================= */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #66a6ff;
+    box-shadow: 0 0 8px rgba(102, 166, 255, 0.7);
+}
+
+/* ================= BUTTON ================= */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #66a6ff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #4a90e2;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ================= RESULT ================= */
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #2ecc71;
+    animation: bounce 0.8s ease;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.footer i {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #4a90e2;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer i:hover {
+    transform: scale(1.3);
+    color: #1c6dd0;
+}
+
+/* Typing animation */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #333;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+}
+
+/* ================= CONFETTI ================= */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    opacity: 0.8;
+    animation: fall 3s linear forwards;
+}
+
+/* ================= DARK MODE ================= */
 .dark-mode {
     background: linear-gradient(120deg, #232526, #414345);
 }
@@ -185,33 +237,40 @@ input:checked + .slider:before {
     color: #00ff99;
 }
 
-/* Confetti container */
-#confetti-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
+.dark-mode .footer {
+    color: #ddd;
 }
 
-/* Confetti pieces */
-.confetti {
-    position: absolute;
-    width: 8px;
-    height: 12px;
-    background-color: red;
-    opacity: 0.8;
-    animation: fall 3s linear forwards;
+.dark-mode .footer i {
+    color: #8ab4f8;
 }
 
-/* Falling animation */
+.dark-mode #loader {
+    background: #222;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 @keyframes fall {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-    }
+    from { transform: translateY(-10px) rotate(0deg); }
+    to { transform: translateY(100vh) rotate(360deg); }
 }

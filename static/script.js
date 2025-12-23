@@ -47,3 +47,20 @@ function launchConfetti() {
         }, 4000);
     }
 }
+
+// Back to top
+window.onscroll = function () {
+    const btn = document.getElementById("backToTop");
+    if (document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+window.addEventListener("load", function () {
+    document.getElementById("loader").style.display = "none";
+});
